@@ -120,12 +120,12 @@ function getDistance(){
       console.log("SUL")
       $("#sentido").html("SUL")
       $("#distancia").html((distancia / 1000) +" Km")
-      $("#km").html((distancia / 1000) + $("#kmSAU").val())
+      $("#km").html(Number(distancia / 1000) + Number($("#kmSAU").val()))
     }else{
       console.log("NORTE")
       $("#sentido").html("NORTE")
       $("#distancia").html((distancia / 1000) +" Km")
-      $("#km").html((distancia / 1000) - $("#kmSAU").val())
+      $("#km").html(Number(distancia / 1000) - Number($("#kmSAU").val()))
     }
    
 
