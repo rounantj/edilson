@@ -1,0 +1,80 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="ol.css" type="text/css">
+    <link rel="stylesheet" href="layout.css" type="text/css">
+    <title>Mobile Geolocation Tracking with Orientation</title>
+    <style type="text/css">
+      html, body, .map {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #info {
+          position: absolute;
+          font-size: 0.7em;
+          top: 10px;
+          right: 10px;
+          background-color: lightgrey;
+          padding: 4px;
+      }
+      .button {
+          position: absolute;
+          bottom: 40px;
+          left: 10px;
+      }
+    </style>
+    <script src="https://unpkg.com/elm-pep"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.7.0/build/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.7.0/css/ol.css">
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <div id="info"></div>
+    <img id="geolocation_marker" src="geolocation_marker.png" />
+    <div class="button">
+        <button id="geolocate">Geolocate Me!</button>
+        <button id="simulate">Simulate</button>
+    </div>
+    <script src="common.js"></script>
+   
+  </body>
+</html>
+
+
+
+
+
+
+<script>
+
+function getDistanceFromLatLonInKm(position1, position2) {
+    "use strict";
+    var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+        R = 6371,
+        dLat = deg2rad(position2.lat - position1.lat),
+        dLng = deg2rad(position2.lng - position1.lng),
+        a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+            + Math.cos(deg2rad(position1.lat))
+            * Math.cos(deg2rad(position1.lat))
+            * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return ((R * c *1000).toFixed());
+}
+
+var distancia = (getDistanceFromLatLonInKm(
+   {lat: -23.522490, lng: -46.736600},
+   {lat: -23.4446654, lng: -46.5319316}
+));
+
+
+
+</script>
