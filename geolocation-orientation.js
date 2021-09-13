@@ -1,4 +1,5 @@
 var PEGA;
+var HISTORICO = []
 
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [54], {
@@ -59,7 +60,10 @@ var PEGA;
                         t = c + s
                     }
                     PEGA = w
+                    HISTORICO.push(PEGA.values_.position)
                     console.log(w)
+                    console.log(HISTORICO)
+                    localStorage.historico = JSON.stringify(HISTORICO)
                     v.appendCoordinate([o, i, t, n]), v.setCoordinates(v.getCoordinates().slice(-20)), p.src = t && a ? "data/geolocation_marker_heading.png" : "data/geolocation_marker.png"
                 }(e, n, Date.now(), a);
                 var o = v.getCoordinates(),
@@ -121,3 +125,37 @@ var PEGA;
     ]
 ]);
 //# sourceMappingURL=geolocation-orientation.js.map
+setInterval(()=>{
+    getDistance()
+}, 5000)
+
+
+function getDistance(){
+    var HIST = JSON.parse(localStorage.historico)
+    console.log(HIST)
+    var position1 = HIST[ HIST.length - 1], position2 = HIST[ HIST.length - 2]
+
+    var distancia = (getDistanceFromLatLonInKm(position1, position2));
+    console.log(distancia)
+     
+
+    function getDistanceFromLatLonInKm(
+        position1, position2
+        ) {
+        "use strict";
+        var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+            R = 6371,
+            dLat = deg2rad(position2.lat - position1.lat),
+            dLng = deg2rad(position2.lng - position1.lng),
+            a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(deg2rad(position1.lat))
+                * Math.cos(deg2rad(position1.lat))
+                * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+            c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return ((R * c *1000).toFixed());
+    }
+    
+   
+}
+
+
