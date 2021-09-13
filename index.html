@@ -70,7 +70,7 @@
     <div id="info"></div>
     <img id="geolocation_marker" src="data/geolocation_marker.png" />
     <div class="button">
-        <button id="geolocate">Geolocate Me!</button>
+        <button id="geolocate">COMEÇAR</button>
         <button id="simulate">Simulate</button>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -80,6 +80,7 @@
       localStorage.historico = JSON.stringify(HISTORICO)
       setTimeout(() => {
 
+        $("#geolocate").click()
 
                     
 
