@@ -58,6 +58,7 @@ var VELO = 1;
                         if (Math.abs(s) > Math.PI) s = -(s >= 0 ? 1 : -1) * (2 * Math.PI - Math.abs(s));
                         t = c + s
                     }
+                    VELO = (3.6 * a).toFixed(1) + " km/h"
                  
                    
                     v.appendCoordinate([o, i, t, n]), v.setCoordinates(v.getCoordinates().slice(-20)), p.src = t && a ? "data/geolocation_marker_heading.png" : "data/geolocation_marker.png"
@@ -72,7 +73,7 @@ var VELO = 1;
                 alert("geolocation error")
             }));
             var M = 0;
-            VELO = (3.6 * a).toFixed(1) + " km/h"
+          
 
             function b() {
                 var e = Date.now() - 1.5 * f;
