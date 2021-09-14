@@ -64,22 +64,27 @@
         top:35%;
         color: gree;
       }
+      .slice{
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+      }
     </style>
     <script src="https://unpkg.com/elm-pep"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
   </head>
   <body>
     <div id="map" class="map"></div>
-    <p class="label4">KM SAU JACUPEMBA: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="172" ></p>
-    <p class="label1">SENTIDO: <valor id="sentido">NULO</valor></p>
-    <p class="label2">KM: <valor id="km">NULO</valor></p>
+    
+    <p class="label4 slice">KM SAU JACUPEMBA: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="172" ></p>
+    <p class="label1 slice">SENTIDO: <valor id="sentido">NULO</valor></p>
+    <p class="label2 slice">KM: <valor id="km">NULO</valor></p>
 
 
-    <p class="velocidade">0 Km/h</p>
+    <p class="velocidade slice">0 Km/h</p>
 
 
    
-    <p class="label3">DISTANCIA <valor id="distancia">NULO</valor></p>
+    <p class="label3 slice">DISTANCIA <valor id="distancia">NULO</valor></p>
     <div id="info"></div>
     <img id="geolocation_marker" src="data/geolocation_marker.png" />
     <div class="button">
