@@ -72,6 +72,7 @@
                 alert("geolocation error")
             }));
             var M = 0;
+            VELO = (3.6 * a).toFixed(1) + " km/h"
 
             function b() {
                 var e = Date.now() - 1.5 * f;
@@ -121,5 +122,3 @@
     ]
 ]);
 //# sourceMappingURL=geolocation-orientation.js.map
-
-
