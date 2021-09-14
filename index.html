@@ -67,6 +67,8 @@
       .slice{
         background: rgba(0, 0, 0, 0.5);
         border-radius: 15px;
+        padding: 6px;
+    color: white;
       }
     </style>
     <script src="https://unpkg.com/elm-pep"></script>
@@ -75,12 +77,12 @@
   <body>
     <div id="map" class="map"></div>
     
-    <p class="label4 slice">KM SAU JACUPEMBA: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="172" ></p>
+    <p style="display: none;" class="label4 slice">KM SAU JACUPEMBA: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="172" ></p>
     <p class="label1 slice">SENTIDO: <valor id="sentido">NULO</valor></p>
     <p class="label2 slice">KM: <valor id="km">NULO</valor></p>
 
 
-    <p class="velocidade slice">0 Km/h</p>
+    <p style="color: green;" class="velocidade slice">0 Km/h</p>
 
 
    
