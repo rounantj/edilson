@@ -56,6 +56,14 @@
         top:15%;
         color: red;
       }
+
+      .velocidade{
+        position: absolute;
+        right: 10%;
+        font-size: 4rem;
+        top:35%;
+        color: gree;
+      }
     </style>
     <script src="https://unpkg.com/elm-pep"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
@@ -65,6 +73,11 @@
     <p class="label4">KM SAU JACUPEMBA: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="172" ></p>
     <p class="label1">SENTIDO: <valor id="sentido">NULO</valor></p>
     <p class="label2">KM: <valor id="km">NULO</valor></p>
+
+
+    <p class="velocidade">0 Km/h</p>
+
+
    
     <p class="label3">DISTANCIA <valor id="distancia">NULO</valor></p>
     <div id="info"></div>
@@ -122,11 +135,13 @@ function showPosition(position)
       });
 
     var distancia = getDistanceFromLatLonInKm(lat,  lon, SAU.lat, SAU.lng);
+
+  var velocidade =   $("#info").html().split("<br>").split(":")[1];
     
     if(distancia > lastNumber){
       $("#sentido").html("SUL");
-      $("#km").html((kmSAU + distancia) + " km");
-      $("#distancia").html(distancia);
+      $("#km").html((kmSAU + distancia).toFixed(2) + " km");
+      $("#distancia").html(distancia.toFixed(2));
 
     }else{
       $("#sentido").html("NORTE");
