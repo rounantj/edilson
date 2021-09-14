@@ -61,7 +61,7 @@
         position: absolute;
         right: 10%;
         font-size: 4rem;
-        top:35%;
+        top:38%;
         color: lightgreen;
       }
       .slice{
@@ -114,7 +114,7 @@ function getLocation()
   else{x.innerHTML="Geolocalização não é suportada nesse browser.";}
   }
 
-  var HISTORICO = [], kmOut = 0
+  var HISTORICO = [], kmOut = 0, dist = 0
  
 function showPosition(position)
   {
@@ -162,6 +162,7 @@ function showPosition(position)
       kmOut = Math.round(kmSAU - distancia)
     }
     lastNumber = Number(distancia)
+    dist = distancia
 
 
 
@@ -223,7 +224,7 @@ function deg2rad(deg) {
 
 
 setInterval(() => {
-    fala("Olá hômi gordo! Você está no kilometro "+kmOut+" sentido "+$("#sentido").text())
+    fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist+" kilômetros do SAU de Jacupemba!")
 }, 300000);
 
 
