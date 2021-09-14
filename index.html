@@ -62,7 +62,7 @@
         right: 10%;
         font-size: 4rem;
         top:35%;
-        color: gree;
+        color: lightgreen;
       }
       .slice{
         background: rgba(0, 0, 0, 0.5);
@@ -82,7 +82,7 @@
     <p class="label2 slice">KM: <valor id="km">NULO</valor></p>
 
 
-    <p style="color: green;" class="velocidade slice">0 Km/h</p>
+    <p style="color: lightgreen;" class="velocidade slice">0 Km/h</p>
 
 
    
@@ -144,6 +144,7 @@ function showPosition(position)
     var distancia = getDistanceFromLatLonInKm(lat,  lon, SAU.lat, SAU.lng);
 
   var velocidade =   $("#info").html().split("<br>").split(":")[1];
+  $(".velocidade").html(velocidade)
     
     if(distancia > lastNumber){
       $("#sentido").html("SUL");
