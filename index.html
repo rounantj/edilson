@@ -224,8 +224,14 @@ setInterval(() => {
 
 setTimeout(() => {
   setInterval(() => {
-      var velocidade =   $("#info").html()
+    try{
+      var velocidade =   $("#info").text().split("<br>")[3].split(":")[1]
       console.log(velocidade)
+    }catch(er){
+      console.log("deu errado")
+      console.log(er)
+    }
+     
 }, 1000);
   
 }, 25000);
