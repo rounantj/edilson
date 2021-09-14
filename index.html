@@ -148,8 +148,8 @@ function showPosition(position)
 
     var distancia = getDistanceFromLatLonInKm(lat,  lon, SAU.lat, SAU.lng);
 
-  var velocidade =   $("#info").html().split("<br>").split(":")[1];
-  $(".velocidade").html(velocidade)
+ // var velocidade =   $("#info").html().split("<br>").split(":")[1];
+  //$(".velocidade").html(velocidade)
     
     if(distancia > lastNumber){
       $("#sentido").html("SUL");
@@ -202,22 +202,8 @@ function showError(error)
                     setInterval(()=>{                     
                         getLocation();
                         
-                     // var velocidade =   $("#info").html().split("<br>").split(":")[1];
-                     // $(".velocidade").html(velocidade)
-                        
-                        if(dist > lastNumber){
-                          $("#sentido").html("SUL");
-                          $("#km").html((kmSAU + dist).toFixed(2) + " km");
-                          $("#distancia").html(dist.toFixed(2));
-                          kmOut = Math.round(kmSAU + dist)
-
-                        }else{
-                          $("#sentido").html("NORTE");
-                          $("#km").html((kmSAU - dist).toFixed(2) + " km");
-                          $("#distancia").html(dist.toFixed(2));
-                          kmOut = Math.round(kmSAU - dist)
-                        }
-                        lastNumber = Number(dist)
+                  
+                 
                         console.log("fuii...")
                        
 
