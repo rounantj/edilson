@@ -134,36 +134,75 @@ lon=position.coords.longitude;
 console.log(lat)
 console.log(lon)
   HISTORICO.push({"lat":lat, "lng":lon})
+
+  $.ajax({
+	type: 'GET',
+	url: 'https://api.distancematrix.ai/maps/api/distancematrix/json?origins='+SAU.lat+', '+SAU.lng+'&destinations='+lat+',%20'+lon+'&key=ZHtITT9O3CfhjyADanorllNBHwoqg',
+	data: "",
+	success: function (data) {
+		console.log(data)
+        var distancia = data.origin_addresses.rows[0].elements.distance.value / 1000;
+
+
+
+        if(distancia > lastNumber){
+        $("#sentido").html("SUL");
+        $("#km").html((kmSAU + distancia).toFixed(2) + " km");
+        $("#distancia").html(distancia.toFixed(2));
+        kmOut = Math.round(kmSAU + distancia)
+
+        }else{
+        $("#sentido").html("NORTE");
+        $("#km").html((kmSAU - distancia).toFixed(2) + " km");
+        $("#distancia").html(distancia.toFixed(2));
+        kmOut = Math.round(kmSAU - distancia)
+        }
+        lastNumber = distancia
+        dist = distancia
+
+
+
+
+
+        localStorage.historico = JSON.stringify(HISTORICO)
+
+        
+setInterval(() => {
+  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
+}, 300000);
+
+
+let speech = new SpeechSynthesisUtterance();
+speech.lang = "pt-BR";
+
+let voices = [];
+window.speechSynthesis.onvoiceschanged = () => {
+voices = window.speechSynthesis.getVoices();
+speech.voice = voices[0];
+let voiceSelect = document.querySelector("#voices");
+voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
+};
+
+function fala(texto){
+  speech.text = texto;
+window.speechSynthesis.speak(speech);
+}
+
+
+
+
+        
+	},
+	error: function (data) {
+		// em caso de erro...
+	},
+	complete: function(){
+		// ao final da requisição...
+	}
+});
  
     
 
-  var distancia = getDistanceFromLatLonInKm(lat,  lon, SAU.lat, SAU.lng);
-
-  var acrescimo = distancia / 3
-   distancia = distancia + acrescimo
-
-
-  
-  if(distancia > lastNumber){
-    $("#sentido").html("SUL");
-    $("#km").html((kmSAU + distancia).toFixed(2) + " km");
-    $("#distancia").html(distancia.toFixed(2));
-    kmOut = Math.round(kmSAU + distancia)
-
-  }else{
-    $("#sentido").html("NORTE");
-    $("#km").html((kmSAU - distancia).toFixed(2) + " km");
-    $("#distancia").html(distancia.toFixed(2));
-    kmOut = Math.round(kmSAU - distancia)
-  }
-  lastNumber = Number(distancia)
-  dist = distancia
-
-
-
-
-
-  localStorage.historico = JSON.stringify(HISTORICO)
 }
 
 function showError(error)
@@ -204,6 +243,11 @@ switch(error.code)
                   }, 5000)
       
     }, 5000);
+
+
+
+
+
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 var R = 6371; // Radius of the earth in km
 var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -225,29 +269,10 @@ return deg * (Math.PI/180)
 
 
 
-setInterval(() => {
-  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
-}, 300000);
 
 
 
 
-
-let speech = new SpeechSynthesisUtterance();
-speech.lang = "pt-BR";
-
-let voices = [];
-window.speechSynthesis.onvoiceschanged = () => {
-voices = window.speechSynthesis.getVoices();
-speech.voice = voices[0];
-let voiceSelect = document.querySelector("#voices");
-voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
-};
-
-function fala(texto){
-  speech.text = texto;
-window.speechSynthesis.speak(speech);
-}
 
 
 
@@ -260,4 +285,3 @@ window.speechSynthesis.speak(speech);
     
   </body>
 </html>
-
