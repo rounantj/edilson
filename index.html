@@ -112,8 +112,8 @@ function showPosition(position)
 
     }else{
       $("#sentido").html("NORTE");
-      $("#km").html((kmSAU - distancia) + " km");
-      $("#distancia").html(distancia);
+      $("#km").html((kmSAU - distancia).toFixed(2) + " km");
+      $("#distancia").html(distancia.toFixed(2));
     }
     lastNumber = Number(distancia)
 
