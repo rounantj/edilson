@@ -128,6 +128,8 @@ function showPosition(position)
 {
   
 console.log("Comecei...")
+lat=position.coords.latitude;
+        lon=position.coords.longitude;
 
   $.ajax({
 	type: 'GET',
@@ -137,8 +139,7 @@ console.log("Comecei...")
 
         var kmSAU = Number($("#kmSAU").val())
 
-        lat=position.coords.latitude;
-        lon=position.coords.longitude;
+     
         console.log(lat)
         console.log(lon)
         HISTORICO.push({"lat":lat, "lng":lon})
