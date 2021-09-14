@@ -113,7 +113,7 @@ function getLocation()
   else{x.innerHTML="Geolocalização não é suportada nesse browser.";}
   }
 
-  var HISTORICO = []
+  var HISTORICO = [], kmOut = 0
  
 function showPosition(position)
   {
@@ -150,11 +150,13 @@ function showPosition(position)
       $("#sentido").html("SUL");
       $("#km").html((kmSAU + distancia).toFixed(2) + " km");
       $("#distancia").html(distancia.toFixed(2));
+      kmOut = Math.round(kmSAU + distancia)
 
     }else{
       $("#sentido").html("NORTE");
       $("#km").html((kmSAU - distancia).toFixed(2) + " km");
       $("#distancia").html(distancia.toFixed(2));
+      kmOut = Math.round(kmSAU - distancia)
     }
     lastNumber = Number(distancia)
 
@@ -213,6 +215,33 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
+
+
+
+
+setInterval(() => {
+    fala("Olá hômi gordo! Você está no kilometro "+kmOut+" sentido "+$("#sentido").text())
+}, 5000);
+
+
+let speech = new SpeechSynthesisUtterance();
+speech.lang = "pt-BR";
+
+let voices = [];
+window.speechSynthesis.onvoiceschanged = () => {
+  voices = window.speechSynthesis.getVoices();
+  speech.voice = voices[0];
+  let voiceSelect = document.querySelector("#voices");
+  voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
+};
+
+function fala(texto){
+    speech.text = texto;
+  window.speechSynthesis.speak(speech);
+}
+
+
+
 
     </script>
     <script src="common.js"></script>
