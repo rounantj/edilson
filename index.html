@@ -167,26 +167,7 @@ console.log(lon)
         localStorage.historico = JSON.stringify(HISTORICO)
 
         
-setInterval(() => {
-  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
-}, 300000);
 
-
-let speech = new SpeechSynthesisUtterance();
-speech.lang = "pt-BR";
-
-let voices = [];
-window.speechSynthesis.onvoiceschanged = () => {
-voices = window.speechSynthesis.getVoices();
-speech.voice = voices[0];
-let voiceSelect = document.querySelector("#voices");
-voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
-};
-
-function fala(texto){
-  speech.text = texto;
-window.speechSynthesis.speak(speech);
-}
 
 
 
@@ -278,6 +259,26 @@ return deg * (Math.PI/180)
 
 };
 
+setInterval(() => {
+  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
+}, 300000);
+
+
+let speech = new SpeechSynthesisUtterance();
+speech.lang = "pt-BR";
+
+let voices = [];
+window.speechSynthesis.onvoiceschanged = () => {
+voices = window.speechSynthesis.getVoices();
+speech.voice = voices[0];
+let voiceSelect = document.querySelector("#voices");
+voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
+};
+
+function fala(texto){
+  speech.text = texto;
+window.speechSynthesis.speak(speech);
+}
 
     </script>
     <script src="common.js"></script>
