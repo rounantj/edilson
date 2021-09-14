@@ -58,7 +58,7 @@
                         if (Math.abs(s) > Math.PI) s = -(s >= 0 ? 1 : -1) * (2 * Math.PI - Math.abs(s));
                         t = c + s
                     }
-                    PEGA = w
+                 
                    
                     v.appendCoordinate([o, i, t, n]), v.setCoordinates(v.getCoordinates().slice(-20)), p.src = t && a ? "data/geolocation_marker_heading.png" : "data/geolocation_marker.png"
                 }(e, n, Date.now(), a);
