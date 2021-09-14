@@ -147,7 +147,7 @@ lat=position.coords.latitude;
         console.log(lon)
         HISTORICO.push({"lat":lat, "lng":lon})
 		console.log(data)
-        var distancia = data.rows[0].elements.distance.value / 1000;
+        var distancia = data.rows[0].elements[0].distance.value / 1000;
 
 
 
