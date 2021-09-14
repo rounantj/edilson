@@ -127,19 +127,21 @@ var HISTORICO = [], kmOut = 0, dist = 0
 
 function showPosition(position)
 {
-  var kmSAU = Number($("#kmSAU").val())
 
-lat=position.coords.latitude;
-lon=position.coords.longitude;
-console.log(lat)
-console.log(lon)
-  HISTORICO.push({"lat":lat, "lng":lon})
 
   $.ajax({
 	type: 'GET',
 	url: 'https://api.distancematrix.ai/maps/api/distancematrix/json?origins='+SAU.lat+', '+SAU.lng+'&destinations='+lat+',%20'+lon+'&key=ZHtITT9O3CfhjyADanorllNBHwoqg',
 	data: "",
 	success: function (data) {
+
+        var kmSAU = Number($("#kmSAU").val())
+
+        lat=position.coords.latitude;
+        lon=position.coords.longitude;
+        console.log(lat)
+        console.log(lon)
+        HISTORICO.push({"lat":lat, "lng":lon})
 		console.log(data)
         var distancia = data.rows[0].elements.distance.value / 1000;
 
