@@ -99,7 +99,6 @@
     <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
  
-  window.onload = function() {
 
   
 
@@ -127,7 +126,8 @@ var HISTORICO = [], kmOut = 0, dist = 0
 
 function showPosition(position)
 {
-
+  
+console.log("Comecei...")
 
   $.ajax({
 	type: 'GET',
@@ -259,7 +259,7 @@ return deg * (Math.PI/180)
 
 
 
-};
+
 
 setInterval(() => {
   fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
