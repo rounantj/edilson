@@ -131,23 +131,7 @@ lon=position.coords.longitude;
 console.log(lat)
 console.log(lon)
   HISTORICO.push({"lat":lat, "lng":lon})
-  
-  url = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon
-  $.ajax({
-      type: 'POST',
-      url: url,
-      data: "",
-      success: function (data) {
-        console.log(data)
-      },
-      error: function (data) {
-        console.log(data)
-        // em caso de erro...
-      },
-      complete: function(){
-        // ao final da requisição...
-      }
-    });
+ 
     
 
   var distancia = getDistanceFromLatLonInKm(lat,  lon, SAU.lat, SAU.lng);
@@ -240,8 +224,8 @@ setInterval(() => {
 
 setTimeout(() => {
   setInterval(() => {
-      var velocidade =   $("#info").html().split("<br>").split(":")[1];
-      $(".velocidade").html(velocidade)
+      var velocidade =   $("#info").html()
+      console.log(velocidade)
 }, 1000);
   
 }, 25000);
