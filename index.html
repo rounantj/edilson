@@ -200,7 +200,26 @@ function showError(error)
                   
 
                     setInterval(()=>{                     
-                        getLocation()
+                        getLocation();
+                        
+                      var velocidade =   $("#info").html().split("<br>").split(":")[1];
+                      $(".velocidade").html(velocidade)
+                        
+                        if(dist > lastNumber){
+                          $("#sentido").html("SUL");
+                          $("#km").html((kmSAU + dist).toFixed(2) + " km");
+                          $("#distancia").html(dist.toFixed(2));
+                          kmOut = Math.round(kmSAU + dist)
+
+                        }else{
+                          $("#sentido").html("NORTE");
+                          $("#km").html((kmSAU - dist).toFixed(2) + " km");
+                          $("#distancia").html(distancia.toFixed(2));
+                          kmOut = Math.round(kmSAU - dist)
+                        }
+                        lastNumber = Number(dist)
+                       
+
                     }, 5000)
         
       }, 5000);
