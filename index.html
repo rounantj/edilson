@@ -79,6 +79,8 @@
   var lastNumber = 0
 
   var SAU = {"local": "172 - 203", "km": 172, "lat":-19.564962, "lng":-40.179030}
+  var url = ""
+                            
 
 
 
@@ -102,6 +104,22 @@ function showPosition(position)
   console.log(lat)
   console.log(lon)
     HISTORICO.push({"lat":lat, "lng":lon})
+    url = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: "",
+        success: function (data) {
+          console.log(data)
+        },
+        error: function (data) {
+          console.log(data)
+          // em caso de erro...
+        },
+        complete: function(){
+          // ao final da requisição...
+        }
+      });
 
     var distancia = getDistanceFromLatLonInKm(lat,  lon, SAU.lat, SAU.lng);
     
