@@ -100,6 +100,8 @@
 <script>
   window.onload = function() {
 
+    var VELO = 1;
+
     
   var lastNumber = 0
 
@@ -192,6 +194,7 @@ switch(error.code)
                 
                
                       console.log("fuii...")
+                      $("#velocidade").html(VELO)
                      
 
                   }, 5000)
@@ -222,19 +225,7 @@ setInterval(() => {
   fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
 }, 300000);
 
-setTimeout(() => {
-  setInterval(() => {
-    try{
-      var velocidade =   $("#info").text().split("<br>")[3].split(":")[1]
-      console.log(velocidade)
-    }catch(er){
-      console.log("deu errado")
-      console.log(er)
-    }
-     
-}, 1000);
-  
-}, 25000);
+
 
 
 
