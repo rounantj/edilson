@@ -97,10 +97,11 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 <script>
  
 
-  
+  var DADU;
 
     
   var lastNumber = 0
@@ -109,6 +110,7 @@ var SAU = {"local": "172 - 203", "km": 172, "lat":-19.564962, "lng":-40.179030}
 var url = ""
 
 localStorage.historico = "{'lat':0, 'lng':0}"
+localStorage.lastUpdate = moment().format("YYYY-MM-DD")
                           
 
 
@@ -130,12 +132,13 @@ function showPosition(position)
 console.log("Comecei...")
 lat=position.coords.latitude;
         lon=position.coords.longitude;
-
+//if(moment(localStorage.lastUpdate).diff(moment()))
   $.ajax({
 	type: 'GET',
 	url: 'https://api.distancematrix.ai/maps/api/distancematrix/json?origins='+SAU.lat+', '+SAU.lng+'&destinations='+lat+',%20'+lon+'&key=ZHtITT9O3CfhjyADanorllNBHwoqg',
 	data: "",
 	success: function (data) {
+    DADU = data
 
         var kmSAU = Number($("#kmSAU").val())
 
