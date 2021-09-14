@@ -219,7 +219,7 @@ return deg * (Math.PI/180)
 
 
 setInterval(() => {
-  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist+" kilômetros do SAU de Jacupemba!")
+  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
 }, 300000);
 
 setTimeout(() => {
