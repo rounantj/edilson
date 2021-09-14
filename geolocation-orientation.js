@@ -1,4 +1,4 @@
-
+var VELO = 1;
 
 (window.webpackJsonp = window.webpackJsonp || []).push([
     [54], {
