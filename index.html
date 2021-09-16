@@ -79,7 +79,7 @@
     <div id="map" class="map"></div>
     <select style="display: none;" id="voices" class="form-select bg-secondary text-light"></select>
     
-    <p style="display: none;" class="label4 slice">KM SAU JACUPEMBA: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="172" ></p>
+    <p style="display: none;" class="label4 slice">KM SAU 1: <input readonly style="max-width: 15%;" type="number" id="kmSAU" value="1" ></p>
     <p class="label1 slice">SENTIDO: <valor id="sentido">NULO</valor></p>
     <p class="label2 slice">KM: <valor id="km">NULO</valor></p>
 
@@ -88,7 +88,7 @@
 
 
    
-    <p class="label3 slice">DISTANCIA DE JACUPEMBA: <valor id="distancia">NULO</valor> km</p>
+    <p class="label3 slice">DISTANCIA DO SAU 01: <valor id="distancia">NULO</valor> km</p>
     <div id="info"></div>
     <img id="geolocation_marker" src="data/geolocation_marker.png" />
     <div class="button">
@@ -106,7 +106,7 @@
     
   var lastNumber = 0
 
-var SAU = {"local": "172 - 203", "km": 172, "lat":-19.564962, "lng":-40.179030}
+var SAU = {"local": "172 - 203", "km": 172, "lat":-18.1847971, "lng":-39.9217623}
 var url = ""
 
 localStorage.historico = "{'lat':0, 'lng':0}"
@@ -266,7 +266,7 @@ return deg * (Math.PI/180)
 
 
 setInterval(() => {
-  fala("Olá hômi gordo! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU de Jacupemba!")
+  fala("Olá! Você está no kilômetro "+kmOut+" sentido "+$("#sentido").text()+", à "+dist.toFixed(1)+" kilômetros do SAU 01 de Pedro Canário!")
 }, 300000);
 
 
